@@ -19,20 +19,7 @@ export default class NotificationScreen extends Component{
   }
 
   getNotifications=()=>{
-    this.requestRef = db.collection("all_notifications")
-    .where("notification_status", "==", "unread")
-    .where("targeted_user_id",'==',this.state.userId)
-    .onSnapshot((snapshot)=>{
-      var allNotifications =  []
-      snapshot.docs.map((doc) =>{
-        var notification = doc.data()
-        notification["doc_id"] = doc.id
-        allNotifications.push(notification)
-      });
-      this.setState({
-          allNotifications : allNotifications
-      });
-    })
+  
   }
 
   componentDidMount(){
